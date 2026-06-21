@@ -1,1 +1,40 @@
-<p>login works!</p>
+<main class="min-h-screen flex flex-col items-center justify-center px-10">
+    <div class="flex flex-row items-center justify-center w-full">
+        <img src="assets/youtube.png" class="w-25 h-25 z-2 rounded-2xl translate-x-6 -translate-y-6">
+        <img src="assets/spotify.png" class="w-25 h-25 rounded-2xl z-3">
+        <img src="assets/facebook.png" class="w-25 h-25 rounded-2xl z-4 -translate-x-6 translate-y-6">
+    </div>
+    <input
+            type="text"
+            [formControl]="username"
+            (input)="username.markAsTouched()"
+            placeholder="Username"
+            class="mt-10 rounded-sm p-1 text-center w-full lg:max-w-60 border outline-none"
+            [ngClass]="usernameInputClass(username)"
+    />
+        @if (username.touched && username.hasError('required')) {
+        <p class="mt-2 text-center text-sm text-red-500">
+            Please enter your username.
+        </p>
+        }
+
+        @if (username.touched && username.hasError('maxlength')) {
+        <p class="mt-2 text-center text-sm text-red-500">
+            Username must not be more than 24 characters.
+        </p>
+        }
+
+        @if (username.touched && username.hasError('pattern')) {
+        <p class="mt-2 text-center text-sm text-red-500">
+            Username can only contain letters and numbers.
+        </p>
+        }
+
+        @if (showPinDialog) {
+        <app-pin-dialog
+            (submitPin)="submitPin($event)"
+            (closeDialog)="closePinDialog()"
+        />
+        }
+    <app-custom-button label="Enter" [disabled]="username.invalid" class="mt-2 w-full lg:max-w-60" (buttonClick)="openPinDialog()"/>
+</main>

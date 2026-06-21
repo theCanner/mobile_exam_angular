@@ -1,0 +1,9 @@
+<button
+  type="button"
+  [disabled]="disabled()"
+  (click)="buttonClick.emit()"
+  class="w-full rounded px-4 py-3 font-semibold text-white disabled:cursor-not-allowed disabled:bg-gray-300"
+  [ngClass]="buttonClass()"
+>
+  {{ label() }}
+</button>

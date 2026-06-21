@@ -1,0 +1,48 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-6">
+  <div class="w-full max-w-sm overflow-hidden rounded-xl bg-gray-100 text-center shadow-lg">
+    <div class="px-6 py-8">
+      <h2 class="text-xl font-bold text-black">
+        Verify It's You
+      </h2>
+
+      <p class="mt-4 text-sm text-black">
+        Please enter your 6 digit PIN
+      </p>
+
+      <div class="mt-8 flex justify-center gap-4">
+        @for (value of pinValues; track $index) {
+          <input
+            [id]="'pin-' + $index"
+            type="password"
+            inputmode="numeric"
+            maxlength="1"
+            [value]="value"
+            placeholder="-"
+            class="w-5 bg-transparent text-center text-xl outline-none"
+            (input)="updatePin($event, $index)"
+            (keydown)="deletePin($event, $index)"
+          />
+        }
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 border-t border-gray-300">
+      <button
+        type="button"
+        class="py-4 text-lg text-green-500 disabled:text-gray-400"
+        [disabled]="!isPinComplete"
+        (click)="enter()"
+      >
+        Enter
+      </button>
+
+      <button
+        type="button"
+        class="border-l border-gray-300 py-4 text-lg text-red-500"
+        (click)="close()"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
