@@ -1,0 +1,21 @@
+<header class="flex h-14 items-center px-4 text-white" [style.background-color]="headerColor">
+  <button type="button" class="mr-4 text-2xl" (click)="goBack()">
+    ‹
+  </button>
+
+  <h1 class="text-base font-semibold">
+    {{ title }}
+  </h1>
+</header>
+
+@if (safeUrl) {
+  <iframe
+    [src]="safeUrl"
+    class="h-[calc(100vh-3.5rem)] w-full border-0"
+    title="In-app browser"
+  ></iframe>
+} @else {
+  <main class="flex min-h-screen items-center justify-center px-6 text-center">
+    <p>Website unavailable.</p>
+  </main>
+}

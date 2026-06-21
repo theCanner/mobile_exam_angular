@@ -4,6 +4,7 @@ import { Loading } from './pages/loading/loading';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { Socials } from './pages/socials/socials';
 import { Others } from './pages/others/others';
+import { Browser } from './projects/browser/browser';
 
 export const routes: Routes = [
  { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,6 +20,10 @@ export const routes: Routes = [
       {
         path: 'socials',
         component: Socials,
+      },
+      {
+        path: 'browser',
+        component: Browser,
       },
       {
         path: 'others',

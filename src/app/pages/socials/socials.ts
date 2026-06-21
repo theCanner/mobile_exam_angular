@@ -49,12 +49,12 @@ export class Socials implements OnInit {
     if (!this.social?.webUrl) {
       return;
     }
-
+    console.log(this.socialColor);
     this.router.navigate(['/dashboard/browser'], {
       state: {
         title: this.social.name,
         url: this.social.webUrl,
-        headerColor: this.social.headerColor,
+        headerColor: this.socialColor,
       },
     });
   }
