@@ -1,1 +1,74 @@
-<p>dashboard works!</p>
+<section class="mt-6 flex items-center gap-4 px-6">
+  <button type="button" (click)="openLogoutDialog()">
+    <img
+      [src]="profilePicture"
+      alt="User avatar"
+      class="h-10 w-10 rounded-full"
+    />
+  </button>
+
+  <div>
+    <h2 class="text-md font-medium text-black">
+      {{ username }}
+    </h2>
+
+    <p class="text-md text-gray-400">
+      {{ sessionId }}
+    </p>
+  </div>
+</section>
+
+@if (showLogoutDialog) {
+  <section class="mt-4 bg-gray-300 p-2">
+    <button
+      type="button"
+      class="mb-2 w-full rounded-xl bg-white py-4 text-xl text-red-500"
+      (click)="logout()"
+    >
+      Logout
+    </button>
+
+    <button
+      type="button"
+      class="w-full rounded-xl bg-white py-4 text-xl text-blue-500"
+      (click)="closeLogoutDialog()"
+    >
+      Cancel
+    </button>
+  </section>
+}
+
+@if (socials().length === 0) {
+  <main class="flex items-center justify-center py-20">
+    <p>Loading...</p>
+  </main>
+} @else {
+  <main class="px-10 pt-8">
+    <div class="grid grid-cols-2 place-items-center gap-8">
+      @for (social of socials(); track social.name) {
+        <button
+          type="button"
+          class="flex flex-col items-center gap-2"
+          (click)="openSocial(social)"
+        >
+          <img
+            [src]="social.iconUrl"
+            [alt]="social.name"
+            class="h-25 w-25 rounded-3xl object-cover"
+          />
+        </button>
+      }
+
+      <button
+        type="button"
+        class="flex flex-col items-center gap-2"
+        aria-label="Open other brands"
+        (click)="openOthers()"
+      >
+        <span class="flex h-25 w-25 items-center justify-center rounded-3xl bg-yellow-400 text-5xl font-bold text-white">
+          →|
+        </span>
+      </button>
+    </div>
+  </main>
+}
