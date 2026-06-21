@@ -38,10 +38,16 @@
   </section>
 }
 
-@if (socials().length === 0) {
+@if (isLoadingSocials) {
   <main class="flex items-center justify-center py-20">
     <p>Loading...</p>
   </main>
+
+} @else if (socials().length === 0) {
+  <main class="flex items-center justify-center py-20">
+    <p>No socials available.</p>
+  </main>
+
 } @else {
   <main class="px-10 pt-8">
     <div class="grid grid-cols-2 place-items-center gap-8">

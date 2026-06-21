@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 
 export type Social = {
   name: string;
@@ -23,14 +23,17 @@ export type User = {
 })
 export class SocialApi {
   private readonly apiUrl = '/api/v1';
+  private socials$?: Observable<Social[]>;
 
   constructor(private http: HttpClient) {}
 
   getSocials(): Observable<Social[]> {
-    return this.http.get<Social[]>(`${this.apiUrl}/socials`, {
-      headers: {
-        CLIENT_ID: 'rgbexam',
-      },
-    });
+    this.socials$ ??= this.http.get<Social[]>(`${this.apiUrl}/socials`, {
+        headers: {
+          CLIENT_ID: 'rgbexam',
+        },
+      }).pipe(shareReplay(1));
+
+    return this.socials$;
   }
 }
