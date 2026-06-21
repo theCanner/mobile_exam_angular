@@ -1,1 +1,38 @@
-<p>socials works!</p>
+@if (social) {
+  <header class="flex h-14 items-center px-4 text-white" [style.background-color]="socialColor">
+    <button type="button" class="mr-4 text-2xl" (click)="goBack()">
+      ‹
+    </button>
+
+    <h1 class="text-base font-semibold">
+      {{ social.name }}
+    </h1>
+  </header>
+
+  <main class="min-h-[calc(100vh-3.5rem)] bg-white text-center">
+    <img
+      [src]="social.imgUrl"
+      [alt]="social.name"
+      class="h-56 w-full object-cover"
+    />
+
+    <section class="px-6 py-8">
+      <p class="text-left text-sm leading-6 text-gray-700">
+        {{ displayHistory }}
+      </p>
+
+      <button
+        type="button"
+        class="mx-auto mt-8 block w-full max-w-xs rounded px-4 py-3 font-semibold text-white shadow"
+        [style.background-color]="socialColor"
+        (click)="openWebsite()"
+      >
+        Visit {{ social.name }}
+      </button>
+    </section>
+  </main>
+} @else {
+  <main class="flex min-h-screen items-center justify-center">
+    <p>No social selected.</p>
+  </main>
+}
