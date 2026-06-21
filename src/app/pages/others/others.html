@@ -1,1 +1,41 @@
-<p>others works!</p>
+<header class="flex h-14 items-center bg-yellow-400 px-4 text-white shadow">
+  <button type="button" class="mr-4 text-2xl" (click)="goBack()">
+    ‹
+  </button>
+
+  <h1 class="text-base font-semibold">Others</h1>
+</header>
+
+<main class="min-h-screen bg-gray-100 px-6 pt-10 text-center">
+  <p class="text-sm text-gray-700">You might also like</p>
+
+  <section class="relative -mx-6 mt-8 overflow-hidden">
+    <div
+      class="flex transition-transform duration-700 ease-in-out"
+      [style.transform]="carouselTransform"
+    >
+      @for (brand of brands; track brand.name) {
+        <div class="min-w-[84%] px-3">
+          <div class="rounded bg-white p-4 shadow">
+            <img
+              [src]="brand.imageUrl"
+              [alt]="brand.name"
+              class="h-28 w-full object-contain"
+            />
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <h2 class="mt-6 text-2xl text-gray-800">
+    {{ activeBrand.name }}
+  </h2>
+
+  <app-custom-button
+    class="mx-auto mt-6 block max-w-xs"
+    [label]="'Visit ' + activeBrand.name + ' Website'"
+    buttonClass="bg-yellow-400"
+    (buttonClick)="visitWebsite()"
+  />
+</main>
