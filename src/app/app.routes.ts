@@ -4,7 +4,7 @@ import { Loading } from './pages/loading/loading';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { Socials } from './pages/socials/socials';
 import { Others } from './pages/others/others';
-import { Browser } from './projects/browser/browser';
+import { Browser } from './pages/browser/browser';
 
 export const routes: Routes = [
  { path: '', redirectTo: 'login', pathMatch: 'full' },

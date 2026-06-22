@@ -1,10 +1,10 @@
-import { Location, NgClass } from '@angular/common';
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-browser',
-  imports: [NgClass],
+  imports: [],
   templateUrl: './browser.html',
   styleUrl: './browser.css',
 })
