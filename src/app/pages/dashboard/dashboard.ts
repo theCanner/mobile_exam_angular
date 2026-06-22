@@ -10,7 +10,7 @@ import { Social, SocialApi, User } from '../api/dashboard/social-api';
 })
 export class Dashboard implements OnInit {
   socials = signal<Social[]>([]);
-  isLoadingSocials = true;
+  isLoadingSocials = signal(true);
 
   user: User | null = null;
 
@@ -33,11 +33,11 @@ export class Dashboard implements OnInit {
     this.SocialApi.getSocials().subscribe({
       next: (socials) => {
         this.socials.set(socials);
-        this.isLoadingSocials = false;
+        this.isLoadingSocials.set(false);
       },
       error: (error) => {
         console.log('Failed to load socials:', error);
-        this.isLoadingSocials = false;
+        this.isLoadingSocials.set(false);
       },
     });
   }
