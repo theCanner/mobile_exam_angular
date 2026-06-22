@@ -1,0 +1,21 @@
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-6">
+  <div class="w-full max-w-sm overflow-hidden rounded-3xl bg-gray-100 text-center shadow-lg">
+    <section class="px-6 py-8">
+      <h2 class="text-2xl font-bold text-black">
+        {{ title() }}
+      </h2>
+
+      <p class="mt-6 text-xl text-black">
+        {{ message() }}
+      </p>
+    </section>
+
+    <button
+      type="button"
+      class="w-full border-t border-gray-400 py-5 text-2xl text-red-500"
+      (click)="closeDialog.emit()"
+    >
+      {{ buttonLabel() }}
+    </button>
+  </div>
+</div>

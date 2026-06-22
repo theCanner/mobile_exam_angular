@@ -46,9 +46,12 @@ export class Loading implements OnInit {
           },
         });
       },
-      error: (error) => {
-        console.log('Login failed:', error);
-        this.router.navigate(['/login']);
+      error: () => {
+        this.router.navigate(['/login'], {
+          state: {
+            loginError: true,
+          },
+        });
       },
     });
   }

@@ -36,5 +36,15 @@
             (closeDialog)="closePinDialog()"
         />
         }
+
+        @if (showLoginError) {
+        <app-alert-dialog
+            title="Error"
+            message="Login Failed, please try again"
+            buttonLabel="Close"
+            (closeDialog)="closeLoginError()"
+        />
+        }
+
     <app-custom-button label="Enter" [disabled]="username.invalid" class="mt-2 w-full lg:max-w-60" (buttonClick)="openPinDialog()"/>
 </main>
